@@ -1,0 +1,166 @@
+node -v       # v18+
+npm -v        # 9+
+git --version # 2.x.x
+npx --version # comes with npm
+---------------------------------------------------------------------------------------
+
+cd backend      = npm init -y
+                = npm install express mongoose cors dotenv 
+                = npm install --save-dev nodemon
+-----------------------------------------------------
+if the package josn is there just run = npm install   
+-----------------------------------------------------
+if error =npm install --save-dev nodemon
+
+=========================DEV ERROR====================================================
+package.json
+
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+------------------------------------------------------------------------------------
+
+.env =
+
+PORT=5001
+MONGO_URI=mongodb+srv://shamalarthur7_db_user:qIGrKNjVUuSCBnm6@cluster0.xhogxdy.mongodb.net/gymtracker?retryWrites=true&w=majority&appName=Cluster0
+                       MONGO_URI=mongodb+srv://shamalarthur7_db_user:qIGrKNjVUuSCBnm6@cluster0.xhogxdy.mongodb.net/?appName=Cluster0
+ DILUM-  mongodb+srv://it24104181_db_user:1E5PMp6vtUgzFEPI@cluster0.kr7pujg.mongodb.net/?appName=Cluster0
+
+
+############################IF THE PORT IS TAKEN #######################################
+if the app crash - npx kill-port 5000
+  npm install mongodb
+ mongodb - ip = 0.0.0.0/0
+==========================MONGODN ERROR=========================================
+ENOTFOUND ERROR 
+
+nslookup cluster0.7t5zujw.mongodb.net
+ping cluster0.7t5zujw.mongodb.net
+
+IF THE MONGODB GET AN ERROR - LAST OPTION
+
+Press Win + R → type ncpa.cpl → Enter
+Right-click your active connection (WiFi or Ethernet) → Properties
+Click Internet Protocol Version 4 (TCP/IPv4) → Properties
+Select "Use the following DNS server addresses"
+Set:
+
+Preferred: 8.8.8.8
+Alternate: 8.8.4.4
+
+
+Click OK
+
+server js -
+
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']); 
+
+==========================FRONTEND DEP=========================================
+
+cd frontend (REACT)     =npx create-react-app frontend
+                         cd frontend
+                         npm install
+                         npm start
+
+# LOCAL development — points to your local backend
+REACT_APP_API_URL=http://localhost:5000/api
+
+# After Railway deployment, change to your Railway URL:
+# REACT_APP_API_URL=https://your-app.up.railway.app/api
+
+
+-------------------------------------------------------------------------------
+
+cd frontend (vite)     = npm create vite@latest frontend -- --template react
+                         cd frontend
+                         npm install
+                         npm run dev
+
+.env = 
+if we do vite then only= VITE_API_URL=http://localhost:5000
+
+
+# After Railway deployment, change to your Railway URL:
+# VITE_API_URL=https://your-app.up.railway.app/api
+
+==========================GITHUB=========================================
+GitHub - the are giving codes
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/IT24100539/task_manager.git
+git push -u origin main
+
+IF ERROR
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git add .
+git commit -m "first commit"
+git push -u origin main
+
+========================RAILWAY=========================================
+BACKEND DEPLOYMENT
+
+railway -
+hv to add the variables
+MONGO_URI
+PORT 
+
+go to settings
+
+add root dictionary = add backend root
+generate domain
+=================================================================
+
+========================NETLIFY==========================================
+FRONTEND DEPLOYMENT 
+
+NETLIFY - 
+base directory = frontend
+Build command = npm run build
+publish dic = ...../build (if its Vite = dist)
+variables = 1 - frontend .env
+            2. link of the webpage.../api
+
+***************************ADDING FIELD*****************************************
+ADDING FILED EXSAMPLE CODES
+
+Step 1 — backend/models/Task.js
+
+// Add inside taskSchema:
+assignedTo: { type: String, default: '', trim: true },
+
+Step 2 — frontend/src/components/TaskForm.js
+// 1. Add to EMPTY state:
+const EMPTY = { title: '', description: '', priority: 'Medium',
+                status: 'Todo', dueDate: '', assignedTo: '' };
+ 
+// 2. Add input in JSX:
+<input
+  name="assignedTo"
+  placeholder="Assigned to"
+  value={form.assignedTo}
+  onChange={handleChange}
+/>
+
+Step 3 — frontend/src/components/TaskList.js
+
+// Display inside the task card:
+{task.assignedTo && <p className="task-due">👤 {task.assignedTo}</p>}
+
+********************************************************************
+
+
+--------------------------GIT PUSH AFTER APDATE--------------------------
+
+git add .
+git commit -m "add assignedTo field to schema and routes"
+git push
+ 
